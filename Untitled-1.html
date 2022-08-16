@@ -1,0 +1,96 @@
+<!-- <script>
+var myinputarr = [];
+var size = 2; // Array size
+    
+    for(var a=0; a<size; a++) 
+    {
+        myinputarr[a] = prompt('Enter array Element 1' + (a+1));
+    }
+    
+    console.log('This is Unit 1:',myinputarr);
+    function Unit1(array) {
+            return permute(null, array);
+    }
+    
+    var max = Unit1(myinputarr);
+    console.log('Max number is',max);
+
+     for (var a = 0; a < size; a++) {
+            myinputarr[a] = prompt('Enter array Element 1' + (a + 1));
+        }
+
+        console.log('This is Unit 2:', myinputarr);
+        function Unit1(array) {
+            return Math.max.apply(null, array);
+        }
+
+        var max = Unit1(myinputarr);
+        console.log('Max number is', max);
+    
+</script>; -->
+<script>
+    var myinputarr = [];
+        var size = 3; // Array size
+
+    
+        if (confirm("Press a button!")) {
+            txt1 = "You pressed OK!";
+        } else {
+            txt2 = "You pressed Cancel!";
+            if (confirm("Are you Sure!")) {
+                txt = "You pressed OK!";
+            } 
+        }
+    if(txt1)
+    {
+         for (var a = 0; a < size; a++) {
+            myinputarr[a] = prompt('Enter array[1] Element ' + a);
+        }
+    }
+    else if(txt2){
+          
+    }
+        
+
+    var permute = function (no) {
+            var result = [];
+            var Data = (i, no) => {
+                if (i === no.length) {
+                    result.push(no.slice());
+                    return;
+                }
+                for (let j = i; j < no.length; j++) { 
+                    [no[i], no[j]] = [no[j], no[i]];
+                    Data(i + 1, no);
+                    [no[i], no[j]] = [no[j], no[i]];
+                }
+            }
+            Data(0, no);
+            console.log(result);          
+            return result;
+        };
+     permute(myinputarr);
+     
+     for (var a = 0; a < size; a++) {
+            myinputarr[a] = prompt('Enter array[2] Element ' + a);
+        }
+
+        var permute = function (no) {
+            var result = [];
+            var Data = (i, no) => {
+                if (i === no.length) {
+                    result.push(no.slice());
+                    return;
+                }
+                for (let j = i; j < no.length; j++) {
+                    [no[i], no[j]] = [no[j], no[i]];
+                    Data(i + 1, no);
+                    [no[i], no[j]] = [no[j], no[i]];
+                }
+            }
+            Data(0, no);
+            console.log(result);
+            return result;
+        };
+        permute(myinputarr);
+</script>
