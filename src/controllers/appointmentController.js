@@ -35,6 +35,7 @@ const createAppointment = async (req, res) => {
 				patientId: currentUser._id,
 				timeSlotId,
 				type: totalCount != 0 ? 'TREATMENTCASE' : 'NEWCASE',
+				consultModel: req.body.consultType,
 			};
 			const payloadSave = new appointmentModel(payloadData);
 			const savePayload = await payloadSave.save();

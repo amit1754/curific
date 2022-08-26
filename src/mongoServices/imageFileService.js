@@ -2,7 +2,7 @@ import { sliderModel } from '../models';
 const findAllQuery = async (query) => {
 	let { search, _id, limit, page, sortField, sortValue, pagination } = query;
 	let sort = {};
-	let whereClause = {};
+	let whereClause = { deletedAt: null };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -21,6 +21,7 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
+	console.log('whereClause', whereClause);
 	if (pagination) {
 		const data = await sliderModel.find(whereClause).sort(sort);
 		return data;

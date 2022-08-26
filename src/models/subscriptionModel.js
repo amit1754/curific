@@ -17,11 +17,11 @@ const SubscriptionModel = new Schema(
 		},
 		patientId: {
 			type: Types.ObjectId,
-			ref: 'patients',
+			ref: 'customer_details',
 		},
 		paymentId: {
 			type: Types.ObjectId,
-			ref: 'payments',
+			ref: 'paymentDetails',
 		},
 		type: {
 			type: String,

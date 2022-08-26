@@ -1,8 +1,9 @@
 import { subscriptionModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue } = query;
+	let { search, _id, limit, page, sortField, sortValue, populate } = query;
 	let sort = {};
-	let whereClause = { deletedAt: null };
+	let data;
+	let whereClause;
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -21,12 +22,22 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	console.log('whereClause', whereClause);
-	const data = await subscriptionModel
-		.find(whereClause)
-		.skip(page > 0 ? +limit * (+page - 1) : 0)
-		.limit(+limit || 20)
-		.sort(sort);
+	if (populate) {
+		data = await subscriptionModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort)
+			.populate('patientId')
+			.populate('packageId')
+			.populate('paymentId');
+	} else {
+		data = await subscriptionModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort);
+	}
 	const totalCount = await subscriptionModel.find(whereClause).countDocuments();
 	return { data, totalCount };
 };

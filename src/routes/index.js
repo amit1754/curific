@@ -26,5 +26,7 @@ router.use('/notification', require('./notificationRoutes'));
 router.use('/feedback', require('./feedbackRoute'));
 router.use('/subscription', require('./subscriptionRoute'));
 router.use('/live-event', require('./liveEventRoute'));
+router.use('/chat-room', require('./chat/roomRoutes'));
+router.use('/assessment', require('./assessmentRoute'));
 
 module.exports = router;

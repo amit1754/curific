@@ -10,8 +10,11 @@ import { greenBright, cyanBright } from 'chalk';
 import './src/config/dbConnection';
 import routes from './src/routes';
 // import fs from 'fs';
+import * as http from 'http';
 import { ENV } from './src/constants';
+import { chatRoomController } from './src/controllers';
 
+const { SOCKET } = ENV;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -87,6 +90,34 @@ server.use('/**', (_req, res) => {
 
 server.listen(PORT || 3002, () => {
 	console.info(cyanBright('API Running at'));
-	console.info(cyanBright(`${greenBright('\tLocalhost:')} ${BASE_API_URL}`));
-	console.info(cyanBright(`${greenBright('\tLAN:')} ${NETWORK_BASE_API_URL}`));
+	console.info(cyanBright(`${greenBright('\tLocalhost:')}${BASE_API_URL}`));
+	console.info(cyanBright(`${greenBright('\tLAN:')}${NETWORK_BASE_API_URL}`));
+});
+
+// socket
+const httpServer = http.createServer(server);
+
+const socketIO = require('socket.io');
+let socketPort = SOCKET.PORT;
+httpServer.listen(socketPort || 8000, () => {
+	console.info(cyanBright('socket Running on ' + socketPort));
+});
+
+const io = socketIO(httpServer, {
+	cors: {
+		origin: '*',
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+	},
+});
+
+io.on('connection', (socket) => {
+	socket.on('init', (room) => {
+		socket.join(room.drId);
+		socket.join(room.patientId);
+	});
+	socket.on('request', async (data) => {
+		let dataResponse = await chatRoomController.sendSocketMessage(data);
+		socket.emit(data.roomId, dataResponse);
+		socket.broadcast.emit(data.roomId, dataResponse);
+	});
 });

@@ -33,11 +33,9 @@ const createSliderImages = async (req, res) => {
 	}
 };
 
-const getSliderImages = async (_req, res) => {
+const getSliderImages = async (req, res) => {
 	try {
-		let { data, totalCount } = await sliderService.findAllQuery({
-			deletedAt: null,
-		});
+		let { data, totalCount } = await sliderService.findAllQuery(req.query);
 		return res
 			.status(SUCCESS)
 			.json({ success: true, msg: GET_SUCCESS, data, totalCount });

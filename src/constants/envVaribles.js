@@ -33,4 +33,7 @@ export default {
 		key: 'rzp_test_iOVnJNIrKGFV76',
 		secrate: 'SIvHrU3AXtO3SMN7J1fmd6sE',
 	},
+	SOCKET: {
+		PORT: 8000,
+	},
 };

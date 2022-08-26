@@ -21,3 +21,5 @@ export { default as notificationController } from './notificationController';
 export { default as feedbackController } from './feedbackController';
 export { default as subscriptionController } from './subscriptionController';
 export { default as liveEventController } from './liveEventController';
+export { default as chatRoomController } from './chat/roomController';
+export { default as assessmentController } from './assessmentController';

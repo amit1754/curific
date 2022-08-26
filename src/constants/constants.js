@@ -289,6 +289,16 @@ export default {
 			DELETE_FAILED: 'Live Event deletion failed',
 			NOT_AVAILABLE: 'Live Event is not available',
 		},
+		CHATROOM: {
+			CREATE_SUCCESS: 'Chat Room created successfully',
+			CREATE_FAILED: 'Chat Room creating failed',
+			DRNOTFOUND: 'Doctor not found',
+			PATIENTNOTFOUND: 'Patient not found',
+			APPOINTMENTNOTFOUND: 'Appointment not found',
+			ROOMNOTFOUND: 'Room not found',
+			SEND_SUCCESS: 'Message sent successfully',
+			SEND_FAILED: 'Message sending failed',
+		},
 	},
 	IMAGE_DATA: {
 		CREATE_SUCCESS: 'Image data created successfully',

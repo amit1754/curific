@@ -161,13 +161,16 @@ const verifyOtp = async (req, res) => {
 const updateProfile = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const { mainStream, specialization, designation } = req.body;
+		const { mainStream, specialization, designation, regNumber, signature } =
+			req.body;
 		let filter = { _id: id },
 			updateData = {
 				mainStream,
 				specialization,
 				designation,
 				isFirstTime: false,
+				regNumber,
+				signature,
 			};
 		const updateDr = await drService.updateDr(filter, updateData);
 

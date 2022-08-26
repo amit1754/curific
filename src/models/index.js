@@ -23,3 +23,4 @@ export { default as notificationModel } from './notificationModel';
 export { default as feedbackModel } from './feedbackModel';
 export { default as assessmentModel } from './assessmentModel';
 export { default as liveEventModel } from './liveEventModel';
+export { default as chatRoomModel } from './chatModel';

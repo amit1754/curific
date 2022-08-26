@@ -61,8 +61,12 @@ const createSubscription = async (req, res) => {
 };
 const getSubscription = async (req, res) => {
 	try {
-		let { data, totalCount } = await userSubscriptionService.findAllQuery(
-			req.query,
+		const payload = {
+			...req.query,
+			populate: true,
+		};
+		const { data, totalCount } = await userSubscriptionService.findAllQuery(
+			payload,
 		);
 		return res.status(SUCCESS).json({
 			success: true,

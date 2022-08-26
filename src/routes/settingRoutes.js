@@ -4,7 +4,7 @@ import { authMiddleware } from '../middleware';
 const router = express.Router();
 
 router.post('/create', authMiddleware, settingController.addSettings);
-router.get('/get', authMiddleware, settingController.getSetting);
+router.get('/get', settingController.getSetting);
 router.put('/update/:id', authMiddleware, settingController.updatesettings);
 router.delete('/delete/:id', authMiddleware, settingController.deleteSetting);
 

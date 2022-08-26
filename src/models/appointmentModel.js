@@ -26,6 +26,7 @@ const appointment = new Schema(
 		},
 		consultModel: {
 			type: String,
+			enum: ['VIDEO', 'CHAT'],
 			default: 'VIDEO',
 		},
 		prescription: {

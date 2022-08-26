@@ -3962,6 +3962,419 @@
 					}
 				]
 			}
+		},
+
+		"/live-event/create": {
+			"post": {
+				"tags": ["Live Event"],
+				"summary": "Add Live Event",
+				"operationId": "AddLiveEvent",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddLiveEventRequest"
+							},
+							"example": {
+								"eventName": "event1",
+								"date": "2022-08-20",
+								"shortDescription": "shortDescription",
+								"link": "aaa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20017"
+								},
+								"example": {
+									"success": true,
+									"message": "Live Event created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/live-event/get": {
+			"get": {
+				"tags": ["Live Event"],
+				"summary": "Get Live Event",
+				"operationId": "GetLiveEvent",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20053"
+								},
+								"example": {
+									"success": true,
+									"message": "Live Event get successfully",
+									"data": [
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"isDeleted": false,
+											"_id": "62fa28c74956616f30be7f77",
+											"eventName": "event1",
+											"date": "2022-08-20T00:00:00.000Z",
+											"shortDescription": "shortDescription",
+											"link": "aaa",
+											"createdAt": "2022-08-15T11:06:47.531Z",
+											"updatedAt": "2022-08-15T11:06:47.531Z",
+											"__v": 0
+										},
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"isDeleted": false,
+											"_id": "62fa296d376f3a70979d90c3",
+											"eventName": "event1",
+											"date": "2022-08-20T00:00:00.000Z",
+											"shortDescription": "shortDescription",
+											"link": "aaa",
+											"createdAt": "2022-08-15T11:09:33.288Z",
+											"updatedAt": "2022-08-15T11:09:33.288Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/live-event/update/62fa28c74956616f30be7f77": {
+			"put": {
+				"tags": ["Live Event"],
+				"summary": "update Live event",
+				"operationId": "updateLiveevent",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/updateLiveeventRequest"
+							},
+							"example": {
+								"eventName": "event2",
+								"date": "2022-08-20",
+								"shortDescription": "shortDescription",
+								"link": "aaa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20017"
+								},
+								"example": {
+									"success": true,
+									"message": "Live Event update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/live-event/delete/62fa28c74956616f30be7f77": {
+			"delete": {
+				"tags": ["Live Event"],
+				"summary": "delete Live Event",
+				"operationId": "deleteLiveEvent",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20017"
+								},
+								"example": {
+									"success": true,
+									"message": "Live Event delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/chat-room/create": {
+			"post": {
+				"tags": ["Chat Room"],
+				"summary": "Create Chat Room",
+				"operationId": "CreateChatRoom",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateChatRoomRequest"
+							},
+							"example": {
+								"drId": "62ef944d81cbda2d545341ae",
+								"appointmentId": "62fcc57bc12443789b9fcd1a",
+								"patientId": "62f226d12ca70035ca1b0343"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20056"
+								},
+								"example": {
+									"success": true,
+									"message": "Chat Room created successfully",
+									"roomId": "63031ef24904395f6b704e06"
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/chat-room/sendMessage": {
+			"post": {
+				"tags": ["Chat Room"],
+				"summary": "send Message",
+				"operationId": "sendMessage",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/sendMessageRequest"
+							},
+							"example": {
+								"senderId": "62ef944d81cbda2d545341ae",
+								"content": "sadsad",
+								"roomId": "62fcc7311159157e02bdb4ac"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m5004"
+								},
+								"example": {
+									"success": true,
+									"message": "Message sent successfully"
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/chat-room/get": {
+			"get": {
+				"tags": ["Chat Room"],
+				"summary": "Get Chat room details",
+				"operationId": "GetChatroomdetails",
+				"parameters": [
+					{
+						"name": "roomId",
+						"in": "query",
+						"description": "",
+						"required": true,
+						"style": "form",
+						"explode": true,
+						"schema": {
+							"type": "string",
+							"example": "62fcc7311159157e02bdb4ac"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20058"
+								},
+								"example": {
+									"success": true,
+									"message": "get",
+									"data": {
+										"_id": "63031ef24904395f6b704e06",
+										"drId": {
+											"email": "dr1@gmail.com",
+											"mobileNumber": "+917383801751",
+											"otp": 1234,
+											"gender": "NULL",
+											"mainStream": null,
+											"specialization": [],
+											"fireBaseToken": null,
+											"profileImage": null,
+											"password": "$2b$10$lDC...ohdefd/2PR/zR7Ne2ValjOnRDNRBRtVwb0bDVSN8.Z9adJu",
+											"salt": "$2b$10$lDC...ohdefd/2PR/zR7Ne",
+											"addedBy": null,
+											"designation": null,
+											"timeSlot": [
+												{
+													"type": "MORNING",
+													"deletedAt": null,
+													"deletedBy": null,
+													"_id": "62ef70b23fc55f1d330d20a5",
+													"startTime": "10:00 am",
+													"endTime": "10:30 am",
+													"createdAt": "2022-08-07T07:58:42.331Z",
+													"updatedAt": "2022-08-09T11:22:38.493Z",
+													"__v": 0
+												},
+												{
+													"type": "MORNING",
+													"deletedAt": null,
+													"deletedBy": null,
+													"_id": "62ef70c03fc55f1d330d20b7",
+													"startTime": "10:30 am",
+													"endTime": "11:00 am",
+													"createdAt": "2022-08-07T07:58:56.832Z",
+													"updatedAt": "2022-08-07T07:58:56.832Z",
+													"__v": 0
+												}
+											],
+											"isFirstTime": true,
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62ef944d81cbda2d545341ae",
+											"name": "dr1",
+											"createdAt": "2022-08-07T10:30:37.483Z",
+											"updatedAt": "2022-08-08T08:58:05.677Z",
+											"__v": 0
+										},
+										"patientId": {
+											"email": "customer1@gmail.com",
+											"mobileNumber": "+917383801751",
+											"otp": null,
+											"gender": "NULL",
+											"loginType": "EMAIL",
+											"isFirstTime": true,
+											"fireBaseToken": null,
+											"profileImage": null,
+											"password": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO6O1jW.fSs2kUPAjQzVGdSy1CaQ0NIcW",
+											"salt": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO",
+											"addedBy": null,
+											"subscribedPackages": null,
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62f226d12ca70035ca1b0343",
+											"name": "customer1",
+											"createdAt": "2022-08-09T09:20:17.385Z",
+											"updatedAt": "2022-08-17T10:39:39.886Z",
+											"__v": 0
+										},
+										"appointmentID": {
+											"isActive": true,
+											"drId": "62ef944d81cbda2d545341ae",
+											"consultModel": "CHAT",
+											"prescription": null,
+											"notes": null,
+											"isSchedule": true,
+											"scheduleAppointmentID": "62fcc57bc12443789b9fcd21",
+											"type": "TREATMENTCASE",
+											"deletedAt": null,
+											"deletedBy": null,
+											"isDeleted": false,
+											"_id": "62fcc57bc12443789b9fcd1a",
+											"date": "2022-08-19T03:00:00.000Z",
+											"patientId": "62f226d12ca70035ca1b0343",
+											"timeSlotId": "62ef70b23fc55f1d330d20a5",
+											"createdAt": "2022-08-17T10:39:55.702Z",
+											"updatedAt": "2022-08-17T10:39:56.000Z",
+											"__v": 0
+										},
+										"chatContent": [
+											{
+												"isRead": false,
+												"_id": "63031f2c803dcf60afe7c202",
+												"content": "hello",
+												"senderId": "62ef944d81cbda2d545341ae"
+											}
+										],
+										"createdAt": "2022-08-22T06:15:14.412Z",
+										"updatedAt": "2022-08-22T06:16:12.234Z",
+										"__v": 0
+									}
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
 		}
 	},
 	"components": {
@@ -7623,6 +8036,981 @@
 					"exerciseVideo": "yes",
 					"rateService": "excellent",
 					"comment": "This is test comment"
+				}
+			},
+			"AddLiveEventRequest": {
+				"title": "AddLiveEventRequest",
+				"required": ["eventName", "date", "shortDescription", "link"],
+				"type": "object",
+				"properties": {
+					"eventName": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string"
+					},
+					"shortDescription": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"eventName": "event1",
+					"date": "2022-08-20",
+					"shortDescription": "shortDescription",
+					"link": "aaa"
+				}
+			},
+			"m20053": {
+				"title": "m20053",
+				"required": ["success", "message", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data22"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Live Event get successfully",
+					"data": [
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62fa28c74956616f30be7f77",
+							"eventName": "event1",
+							"date": "2022-08-20T00:00:00.000Z",
+							"shortDescription": "shortDescription",
+							"link": "aaa",
+							"createdAt": "2022-08-15T11:06:47.531Z",
+							"updatedAt": "2022-08-15T11:06:47.531Z",
+							"__v": 0
+						},
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62fa296d376f3a70979d90c3",
+							"eventName": "event1",
+							"date": "2022-08-20T00:00:00.000Z",
+							"shortDescription": "shortDescription",
+							"link": "aaa",
+							"createdAt": "2022-08-15T11:09:33.288Z",
+							"updatedAt": "2022-08-15T11:09:33.288Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"Data22": {
+				"title": "Data22",
+				"required": [
+					"deletedAt",
+					"deletedBy",
+					"isDeleted",
+					"_id",
+					"eventName",
+					"date",
+					"shortDescription",
+					"link",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"_id": {
+						"type": "string"
+					},
+					"eventName": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string"
+					},
+					"shortDescription": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"deletedAt": null,
+					"deletedBy": null,
+					"isDeleted": false,
+					"_id": "62fa28c74956616f30be7f77",
+					"eventName": "event1",
+					"date": "2022-08-20T00:00:00.000Z",
+					"shortDescription": "shortDescription",
+					"link": "aaa",
+					"createdAt": "2022-08-15T11:06:47.531Z",
+					"updatedAt": "2022-08-15T11:06:47.531Z",
+					"__v": 0
+				}
+			},
+			"updateLiveeventRequest": {
+				"title": "updateLiveeventRequest",
+				"required": ["eventName", "date", "shortDescription", "link"],
+				"type": "object",
+				"properties": {
+					"eventName": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string"
+					},
+					"shortDescription": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"eventName": "event2",
+					"date": "2022-08-20",
+					"shortDescription": "shortDescription",
+					"link": "aaa"
+				}
+			},
+			"CreateChatRoomRequest": {
+				"title": "CreateChatRoomRequest",
+				"required": ["drId", "appointmentId", "patientId"],
+				"type": "object",
+				"properties": {
+					"drId": {
+						"type": "string"
+					},
+					"appointmentId": {
+						"type": "string"
+					},
+					"patientId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"drId": "62ef944d81cbda2d545341ae",
+					"appointmentId": "62fcc57bc12443789b9fcd1a",
+					"patientId": "62f226d12ca70035ca1b0343"
+				}
+			},
+			"m20056": {
+				"title": "m20056",
+				"required": ["success", "message", "roomId"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"roomId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Chat Room created successfully",
+					"roomId": "63031ef24904395f6b704e06"
+				}
+			},
+			"sendMessageRequest": {
+				"title": "sendMessageRequest",
+				"required": ["senderId", "content", "roomId"],
+				"type": "object",
+				"properties": {
+					"senderId": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"roomId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"senderId": "62ef944d81cbda2d545341ae",
+					"content": "sadsad",
+					"roomId": "62fcc7311159157e02bdb4ac"
+				}
+			},
+			"m20058": {
+				"title": "m20058",
+				"required": ["success", "message", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/Data23"
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "get",
+					"data": {
+						"_id": "63031ef24904395f6b704e06",
+						"drId": {
+							"email": "dr1@gmail.com",
+							"mobileNumber": "+917383801751",
+							"otp": 1234,
+							"gender": "NULL",
+							"mainStream": null,
+							"specialization": [],
+							"fireBaseToken": null,
+							"profileImage": null,
+							"password": "$2b$10$lDC...ohdefd/2PR/zR7Ne2ValjOnRDNRBRtVwb0bDVSN8.Z9adJu",
+							"salt": "$2b$10$lDC...ohdefd/2PR/zR7Ne",
+							"addedBy": null,
+							"designation": null,
+							"timeSlot": [
+								{
+									"type": "MORNING",
+									"deletedAt": null,
+									"deletedBy": null,
+									"_id": "62ef70b23fc55f1d330d20a5",
+									"startTime": "10:00 am",
+									"endTime": "10:30 am",
+									"createdAt": "2022-08-07T07:58:42.331Z",
+									"updatedAt": "2022-08-09T11:22:38.493Z",
+									"__v": 0
+								},
+								{
+									"type": "MORNING",
+									"deletedAt": null,
+									"deletedBy": null,
+									"_id": "62ef70c03fc55f1d330d20b7",
+									"startTime": "10:30 am",
+									"endTime": "11:00 am",
+									"createdAt": "2022-08-07T07:58:56.832Z",
+									"updatedAt": "2022-08-07T07:58:56.832Z",
+									"__v": 0
+								}
+							],
+							"isFirstTime": true,
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ef944d81cbda2d545341ae",
+							"name": "dr1",
+							"createdAt": "2022-08-07T10:30:37.483Z",
+							"updatedAt": "2022-08-08T08:58:05.677Z",
+							"__v": 0
+						},
+						"patientId": {
+							"email": "customer1@gmail.com",
+							"mobileNumber": "+917383801751",
+							"otp": null,
+							"gender": "NULL",
+							"loginType": "EMAIL",
+							"isFirstTime": true,
+							"fireBaseToken": null,
+							"profileImage": null,
+							"password": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO6O1jW.fSs2kUPAjQzVGdSy1CaQ0NIcW",
+							"salt": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO",
+							"addedBy": null,
+							"subscribedPackages": null,
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62f226d12ca70035ca1b0343",
+							"name": "customer1",
+							"createdAt": "2022-08-09T09:20:17.385Z",
+							"updatedAt": "2022-08-17T10:39:39.886Z",
+							"__v": 0
+						},
+						"appointmentID": {
+							"isActive": true,
+							"drId": "62ef944d81cbda2d545341ae",
+							"consultModel": "CHAT",
+							"prescription": null,
+							"notes": null,
+							"isSchedule": true,
+							"scheduleAppointmentID": "62fcc57bc12443789b9fcd21",
+							"type": "TREATMENTCASE",
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62fcc57bc12443789b9fcd1a",
+							"date": "2022-08-19T03:00:00.000Z",
+							"patientId": "62f226d12ca70035ca1b0343",
+							"timeSlotId": "62ef70b23fc55f1d330d20a5",
+							"createdAt": "2022-08-17T10:39:55.702Z",
+							"updatedAt": "2022-08-17T10:39:56.000Z",
+							"__v": 0
+						},
+						"chatContent": [
+							{
+								"isRead": false,
+								"_id": "63031f2c803dcf60afe7c202",
+								"content": "hello",
+								"senderId": "62ef944d81cbda2d545341ae"
+							}
+						],
+						"createdAt": "2022-08-22T06:15:14.412Z",
+						"updatedAt": "2022-08-22T06:16:12.234Z",
+						"__v": 0
+					}
+				}
+			},
+			"Data23": {
+				"title": "Data23",
+				"required": [
+					"_id",
+					"drId",
+					"patientId",
+					"appointmentID",
+					"chatContent",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"drId": {
+						"$ref": "#/components/schemas/DrId"
+					},
+					"patientId": {
+						"$ref": "#/components/schemas/PatientId"
+					},
+					"appointmentID": {
+						"$ref": "#/components/schemas/AppointmentID"
+					},
+					"chatContent": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/ChatContent"
+						},
+						"description": ""
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"_id": "63031ef24904395f6b704e06",
+					"drId": {
+						"email": "dr1@gmail.com",
+						"mobileNumber": "+917383801751",
+						"otp": 1234,
+						"gender": "NULL",
+						"mainStream": null,
+						"specialization": [],
+						"fireBaseToken": null,
+						"profileImage": null,
+						"password": "$2b$10$lDC...ohdefd/2PR/zR7Ne2ValjOnRDNRBRtVwb0bDVSN8.Z9adJu",
+						"salt": "$2b$10$lDC...ohdefd/2PR/zR7Ne",
+						"addedBy": null,
+						"designation": null,
+						"timeSlot": [
+							{
+								"type": "MORNING",
+								"deletedAt": null,
+								"deletedBy": null,
+								"_id": "62ef70b23fc55f1d330d20a5",
+								"startTime": "10:00 am",
+								"endTime": "10:30 am",
+								"createdAt": "2022-08-07T07:58:42.331Z",
+								"updatedAt": "2022-08-09T11:22:38.493Z",
+								"__v": 0
+							},
+							{
+								"type": "MORNING",
+								"deletedAt": null,
+								"deletedBy": null,
+								"_id": "62ef70c03fc55f1d330d20b7",
+								"startTime": "10:30 am",
+								"endTime": "11:00 am",
+								"createdAt": "2022-08-07T07:58:56.832Z",
+								"updatedAt": "2022-08-07T07:58:56.832Z",
+								"__v": 0
+							}
+						],
+						"isFirstTime": true,
+						"isEnabled": true,
+						"deletedAt": null,
+						"deletedBy": null,
+						"_id": "62ef944d81cbda2d545341ae",
+						"name": "dr1",
+						"createdAt": "2022-08-07T10:30:37.483Z",
+						"updatedAt": "2022-08-08T08:58:05.677Z",
+						"__v": 0
+					},
+					"patientId": {
+						"email": "customer1@gmail.com",
+						"mobileNumber": "+917383801751",
+						"otp": null,
+						"gender": "NULL",
+						"loginType": "EMAIL",
+						"isFirstTime": true,
+						"fireBaseToken": null,
+						"profileImage": null,
+						"password": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO6O1jW.fSs2kUPAjQzVGdSy1CaQ0NIcW",
+						"salt": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO",
+						"addedBy": null,
+						"subscribedPackages": null,
+						"isEnabled": true,
+						"deletedAt": null,
+						"deletedBy": null,
+						"_id": "62f226d12ca70035ca1b0343",
+						"name": "customer1",
+						"createdAt": "2022-08-09T09:20:17.385Z",
+						"updatedAt": "2022-08-17T10:39:39.886Z",
+						"__v": 0
+					},
+					"appointmentID": {
+						"isActive": true,
+						"drId": "62ef944d81cbda2d545341ae",
+						"consultModel": "CHAT",
+						"prescription": null,
+						"notes": null,
+						"isSchedule": true,
+						"scheduleAppointmentID": "62fcc57bc12443789b9fcd21",
+						"type": "TREATMENTCASE",
+						"deletedAt": null,
+						"deletedBy": null,
+						"isDeleted": false,
+						"_id": "62fcc57bc12443789b9fcd1a",
+						"date": "2022-08-19T03:00:00.000Z",
+						"patientId": "62f226d12ca70035ca1b0343",
+						"timeSlotId": "62ef70b23fc55f1d330d20a5",
+						"createdAt": "2022-08-17T10:39:55.702Z",
+						"updatedAt": "2022-08-17T10:39:56.000Z",
+						"__v": 0
+					},
+					"chatContent": [
+						{
+							"isRead": false,
+							"_id": "63031f2c803dcf60afe7c202",
+							"content": "hello",
+							"senderId": "62ef944d81cbda2d545341ae"
+						}
+					],
+					"createdAt": "2022-08-22T06:15:14.412Z",
+					"updatedAt": "2022-08-22T06:16:12.234Z",
+					"__v": 0
+				}
+			},
+			"DrId": {
+				"title": "DrId",
+				"required": [
+					"email",
+					"mobileNumber",
+					"otp",
+					"gender",
+					"mainStream",
+					"specialization",
+					"fireBaseToken",
+					"profileImage",
+					"password",
+					"salt",
+					"addedBy",
+					"designation",
+					"timeSlot",
+					"isFirstTime",
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"mobileNumber": {
+						"type": "string"
+					},
+					"otp": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"mainStream": {
+						"type": "string",
+						"nullable": true
+					},
+					"specialization": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					},
+					"fireBaseToken": {
+						"type": "string",
+						"nullable": true
+					},
+					"profileImage": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string"
+					},
+					"salt": {
+						"type": "string"
+					},
+					"addedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"designation": {
+						"type": "string",
+						"nullable": true
+					},
+					"timeSlot": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/TimeSlot"
+						},
+						"description": ""
+					},
+					"isFirstTime": {
+						"type": "boolean"
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"email": "dr1@gmail.com",
+					"mobileNumber": "+917383801751",
+					"otp": 1234,
+					"gender": "NULL",
+					"mainStream": null,
+					"specialization": [],
+					"fireBaseToken": null,
+					"profileImage": null,
+					"password": "$2b$10$lDC...ohdefd/2PR/zR7Ne2ValjOnRDNRBRtVwb0bDVSN8.Z9adJu",
+					"salt": "$2b$10$lDC...ohdefd/2PR/zR7Ne",
+					"addedBy": null,
+					"designation": null,
+					"timeSlot": [
+						{
+							"type": "MORNING",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ef70b23fc55f1d330d20a5",
+							"startTime": "10:00 am",
+							"endTime": "10:30 am",
+							"createdAt": "2022-08-07T07:58:42.331Z",
+							"updatedAt": "2022-08-09T11:22:38.493Z",
+							"__v": 0
+						},
+						{
+							"type": "MORNING",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ef70c03fc55f1d330d20b7",
+							"startTime": "10:30 am",
+							"endTime": "11:00 am",
+							"createdAt": "2022-08-07T07:58:56.832Z",
+							"updatedAt": "2022-08-07T07:58:56.832Z",
+							"__v": 0
+						}
+					],
+					"isFirstTime": true,
+					"isEnabled": true,
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62ef944d81cbda2d545341ae",
+					"name": "dr1",
+					"createdAt": "2022-08-07T10:30:37.483Z",
+					"updatedAt": "2022-08-08T08:58:05.677Z",
+					"__v": 0
+				}
+			},
+			"TimeSlot": {
+				"title": "TimeSlot",
+				"required": [
+					"type",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"startTime",
+					"endTime",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"type": "MORNING",
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62ef70b23fc55f1d330d20a5",
+					"startTime": "10:00 am",
+					"endTime": "10:30 am",
+					"createdAt": "2022-08-07T07:58:42.331Z",
+					"updatedAt": "2022-08-09T11:22:38.493Z",
+					"__v": 0
+				}
+			},
+			"PatientId": {
+				"title": "PatientId",
+				"required": [
+					"email",
+					"mobileNumber",
+					"otp",
+					"gender",
+					"loginType",
+					"isFirstTime",
+					"fireBaseToken",
+					"profileImage",
+					"password",
+					"salt",
+					"addedBy",
+					"subscribedPackages",
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"mobileNumber": {
+						"type": "string"
+					},
+					"otp": {
+						"type": "string",
+						"nullable": true
+					},
+					"gender": {
+						"type": "string"
+					},
+					"loginType": {
+						"type": "string"
+					},
+					"isFirstTime": {
+						"type": "boolean"
+					},
+					"fireBaseToken": {
+						"type": "string",
+						"nullable": true
+					},
+					"profileImage": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string"
+					},
+					"salt": {
+						"type": "string"
+					},
+					"addedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"subscribedPackages": {
+						"type": "string",
+						"nullable": true
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"email": "customer1@gmail.com",
+					"mobileNumber": "+917383801751",
+					"otp": null,
+					"gender": "NULL",
+					"loginType": "EMAIL",
+					"isFirstTime": true,
+					"fireBaseToken": null,
+					"profileImage": null,
+					"password": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO6O1jW.fSs2kUPAjQzVGdSy1CaQ0NIcW",
+					"salt": "$2b$10$jOrjP9lnMK1rr2YLv.j0PO",
+					"addedBy": null,
+					"subscribedPackages": null,
+					"isEnabled": true,
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62f226d12ca70035ca1b0343",
+					"name": "customer1",
+					"createdAt": "2022-08-09T09:20:17.385Z",
+					"updatedAt": "2022-08-17T10:39:39.886Z",
+					"__v": 0
+				}
+			},
+			"AppointmentID": {
+				"title": "AppointmentID",
+				"required": [
+					"isActive",
+					"drId",
+					"consultModel",
+					"prescription",
+					"notes",
+					"isSchedule",
+					"scheduleAppointmentID",
+					"type",
+					"deletedAt",
+					"deletedBy",
+					"isDeleted",
+					"_id",
+					"date",
+					"patientId",
+					"timeSlotId",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"drId": {
+						"type": "string"
+					},
+					"consultModel": {
+						"type": "string"
+					},
+					"prescription": {
+						"type": "string",
+						"nullable": true
+					},
+					"notes": {
+						"type": "string",
+						"nullable": true
+					},
+					"isSchedule": {
+						"type": "boolean"
+					},
+					"scheduleAppointmentID": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"_id": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string"
+					},
+					"patientId": {
+						"type": "string"
+					},
+					"timeSlotId": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"isActive": true,
+					"drId": "62ef944d81cbda2d545341ae",
+					"consultModel": "CHAT",
+					"prescription": null,
+					"notes": null,
+					"isSchedule": true,
+					"scheduleAppointmentID": "62fcc57bc12443789b9fcd21",
+					"type": "TREATMENTCASE",
+					"deletedAt": null,
+					"deletedBy": null,
+					"isDeleted": false,
+					"_id": "62fcc57bc12443789b9fcd1a",
+					"date": "2022-08-19T03:00:00.000Z",
+					"patientId": "62f226d12ca70035ca1b0343",
+					"timeSlotId": "62ef70b23fc55f1d330d20a5",
+					"createdAt": "2022-08-17T10:39:55.702Z",
+					"updatedAt": "2022-08-17T10:39:56.000Z",
+					"__v": 0
+				}
+			},
+			"ChatContent": {
+				"title": "ChatContent",
+				"required": ["isRead", "_id", "content", "senderId"],
+				"type": "object",
+				"properties": {
+					"isRead": {
+						"type": "boolean"
+					},
+					"_id": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"senderId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"isRead": false,
+					"_id": "63031f2c803dcf60afe7c202",
+					"content": "hello",
+					"senderId": "62ef944d81cbda2d545341ae"
 				}
 			}
 		},
