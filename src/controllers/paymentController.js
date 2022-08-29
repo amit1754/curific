@@ -4,9 +4,11 @@ import {
 	paymentService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { notificationModel, paymentModel } from '../models';
+import { notificationModel, paymentModel, drModel } from '../models';
 import { rozorPayment } from '../service';
 import customerService from '../mongoServices/customerService';
+const moment = require('moment');
+
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS, PAYMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -124,7 +126,20 @@ const failedPayment = async (req, res) => {
 
 const getPayment = async (req, res) => {
 	try {
-		console.log(req.query);
+		const { _id } = req.body;
+		if (_id) {
+			let saveResponse = await drModel.find({ _id: _id });
+			return res.status(SUCCESS).json({
+				success: true,
+				message: PAYMENT.GET_SUCCESS,
+				data: saveResponse,
+			});
+		}
+		const lastTenDayRecord = await drModel.find({
+			createdAt: {
+				$gte: moment().add(-10, 'days'),
+			},
+		});
 		const payload = {
 			...req.query,
 			isDeleted: true,
@@ -134,6 +149,7 @@ const getPayment = async (req, res) => {
 			success: true,
 			message: PAYMENT.GET_SUCCESS,
 			data: paymentData,
+			lastTenDayRecord,
 		});
 	} catch (error) {
 		return res.status(FAILED).json({
@@ -142,5 +158,4 @@ const getPayment = async (req, res) => {
 		});
 	}
 };
-
 export default { addPayment, failedPayment, getPayment };

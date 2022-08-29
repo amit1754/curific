@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { paymentController } from '../controllers';
 import { customerMiddleware } from '../middleware';
 

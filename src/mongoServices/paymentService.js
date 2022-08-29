@@ -9,6 +9,7 @@ const findAllQuery = async (query) => {
 		sortValue,
 		paymentId,
 		appointmentId,
+		paidAmount,
 	} = query;
 	let sort = {};
 	let whereClause = { deletedAt: null };
@@ -36,13 +37,22 @@ const findAllQuery = async (query) => {
 	if (appointmentId) {
 		whereClause = { ...whereClause, appointmentId };
 	}
+	if (paidAmount) {
+		whereClause = { ...whereClause, paidAmount };
+	}
 	const data = await paymentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
 		.sort(sort);
 	const totalCount = await paymentModel.find(whereClause).countDocuments();
-	return { data, totalCount };
+	let paidAmountCount = 0;
+	data &&
+		data?.map((element) => {
+			paidAmountCount += element?.paidAmount;
+		});
+
+	return { data, totalCount, paidAmountCount };
 };
 
 const updateOneQuery = async (filter, update, projection) => {
